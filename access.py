@@ -3,7 +3,7 @@
 @Github: https://github.com/lty5240
 @Date: 2019-09-03 14:14:05
 @LastEditor: Linty
-@LastEditTime: 2019-09-04 16:07:04
+@LastEditTime: 2019-09-04 16:15:28
 @Description: -
 '''
 
@@ -50,7 +50,7 @@ user_agent = [
     'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/536.11 (KHTML, like Gecko) Chrome/20.0.1132.11 TaoBrowser/3.0 Safari/536.11'
 ]
 # 来源
-referer = "https://www.baidu.com"
+referer = "http://www.gov.cn/"
 
 useList = []
 agentSize = len(user_agent)
@@ -98,6 +98,7 @@ def job():
             browser = webdriver.Chrome(
                 executable_path="/data/script/chromedriver", options=opt)
             browser.get(referer)
+            time.sleep(1)
             browser.execute_script("window.location.href='%s';" % (url))
             for i in range(1, WAIT_TIME):
                 browser.execute_script(
