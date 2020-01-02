@@ -1,11 +1,4 @@
-'''
-@Author: Linty
-@Github: https://github.com/lty5240
-@Date: 2019-09-03 14:14:05
-@LastEditor: Linty
-@LastEditTime: 2019-09-04 16:15:28
-@Description: -
-'''
+
 
 import requests
 import threading
