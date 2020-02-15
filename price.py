@@ -19,29 +19,19 @@ foods = [
 ]
 
 
-def searchFoods(index, count=0, child=True):
+def searchFoods(index, prefix=[]):
     global selectList
-    global foods
-    if(index >= len(foods)):
-        return None
-    sum = foods[index].food_price + count
-    if sum > 30:
-        return None
-    else:
-        for i in range(len(foods)):
-          result = searchFoods(index + 1 + i, sum)
-          if result == None:
-              if child:
-                  return foods[index].food_name
-          else:
-              if child:
-                  return foods[index].food_name + " - " + result
-              else:
-                  selectList.append(foods[index].food_name + " - " + result)
-
+    count = 0
+    for item in prefix:
+        count += item.food_price
+    prefix.append(foods[index])
+    for i in range(index + 1, len(foods) - 1):
+        searchFoods(i, prefix)
+    if len(prefix) > 0 and 20 <=  count + foods[index].food_price <= 30:
+        selectList.append(prefix)
 
 for i in range(len(foods)):
-    searchFoods(i, child=False)
+    searchFoods(i)
 
 for item in selectList:
     print(item)
